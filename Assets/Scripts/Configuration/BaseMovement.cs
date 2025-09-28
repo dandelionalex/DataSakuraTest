@@ -12,12 +12,12 @@ namespace Zoo.Config
             Vector3.left
         };
 
-        public virtual void StartMove(IAnimalPresenter target, MonoBehaviour context)
+        public virtual void StartMove( IAnimalPresenter target, MonoBehaviour context )
         {
 
         }
 
-        protected void AdjustRotation(Transform transform, Vector3 direction)
+        protected void AdjustRotation( Transform transform, Vector3 direction )
         {
             var rot = Quaternion.LookRotation(direction, Vector3.up);
             transform.rotation = rot;

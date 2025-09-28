@@ -3,7 +3,7 @@ using Zenject;
 using Zoo.Config;
 using Zoo.View;
 
-namespace Zoo
+namespace Zoo.Factories
 {
     public sealed class AnimalFactory
     {

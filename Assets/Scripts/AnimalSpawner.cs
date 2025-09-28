@@ -4,14 +4,17 @@ using UnityEngine;
 using Zenject;
 using Zoo.Config;
 using Zoo.Signals;
+using Zoo.Factories;
 
 namespace Zoo
 {
     public sealed class AnimalSpawner : MonoBehaviour
     {
-        [Inject] private GameConfig _gameConfig;
-        [Inject] private AnimalFactory _amimalFactory;
-        [Inject] private SignalBus _signalBus;
+        [Inject] GameConfig         _gameConfig;
+        [Inject] AnimalFactory      _amimalFactory;
+        [Inject] UIInWorldFactory   _UIInWorldFactory;
+        [Inject] SignalBus          _signalBus;
+        [Inject] PrefabsConfig      _prefabsConfig;
 
         List<IAnimalPresenter> _animals = new List<IAnimalPresenter>();
         bool _shouldSpawn;
@@ -35,16 +38,16 @@ namespace Zoo
 
         void SpawnNextAnimal()
         {
-            var animalId = Random.Range(0, _gameConfig.animals.Length);
+            var animalId = Random.Range( 0, _gameConfig.animals.Length );
             var animalConfig = _gameConfig.animals[animalId];
             var width = _gameConfig.mapSize.x / 2 - _gameConfig.spawnPadding.x;
             var height = _gameConfig.mapSize.y / 2 - _gameConfig.spawnPadding.x;
 
-            var amnimalPos = new Vector3(Random.Range(-width, width),
+            var amnimalPos = new Vector3( Random.Range(-width, width),
                                                 0,
-                                                Random.Range(-height, height));
+                                                Random.Range(-height, height) );
 
-            var animalPresenter = _amimalFactory.Spawn(animalConfig, amnimalPos, this.transform);
+            var animalPresenter = _amimalFactory.Spawn( animalConfig, amnimalPos, this.transform );
             animalPresenter.OnDie += OnAnimalDie;
 
             _animals.Add(animalPresenter);
@@ -56,7 +59,9 @@ namespace Zoo
             presenter.OnDie -= OnAnimalDie;
             _animals.Remove(presenter);
 
-            _signalBus.Fire( new AnimalDiedSignal(presenter.AnimalType) );
+            _signalBus.Fire(new AnimalDiedSignal(presenter.AnimalType));
+            
+            _UIInWorldFactory.Spawn(presenter.AnimalTransform.position, this.transform);
         }
     }
 }
