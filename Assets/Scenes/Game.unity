@@ -681,8 +681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947d4a3568318484aace7cf8b505dc7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PreysDied: {fileID: 0}
-  PredatorsDied: {fileID: 0}
+  PreysDied: {fileID: 322924789}
+  PredatorsDied: {fileID: 1544600956}
 --- !u!1 &507840643
 GameObject:
   m_ObjectHideFlags: 0

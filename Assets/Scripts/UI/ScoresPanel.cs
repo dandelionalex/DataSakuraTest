@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using Zenject;
+using Zoo.Signals;
 
 namespace Zoo.UI
 {
@@ -9,22 +10,26 @@ namespace Zoo.UI
         [SerializeField] TMP_Text PreysDied;
         [SerializeField] TMP_Text PredatorsDied;
 
-        const string PREYS_TEXT = "";
-        const string PREDATORS_TEXT = "";
+        const string PREYS_TEXT = "Prey died:";
+        const string PREDATORS_TEXT = "Predators died:";
 
-        [Inject] SignalBus signalBus;
+        [Inject] SignalBus _signalBus;
 
-        void Onable()
+        void OnEnable()
         {
-            
+            _signalBus.Subscribe<ScoresUpdatedSignal>(ScoreUpdatedSignal);
         }
 
         void OnDisable()
         {
-            
+            _signalBus.Unsubscribe<ScoresUpdatedSignal>(ScoreUpdatedSignal);
         }
 
-        
+        void ScoreUpdatedSignal(ScoresUpdatedSignal signal)
+        {
+            PreysDied.text      = $"{PREYS_TEXT} {signal.PreysDied}";
+            PredatorsDied.text  = $"{PREDATORS_TEXT} {signal.PredatorsDied}";
+        }
     }
 }
 

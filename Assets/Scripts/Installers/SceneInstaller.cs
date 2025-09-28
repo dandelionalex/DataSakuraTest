@@ -18,6 +18,7 @@ namespace Zoo.Installers
             Container.BindInterfacesAndSelfTo<GameController>().AsSingle();
 
             Container.DeclareSignal<AnimalDiedSignal>();
+            Container.DeclareSignal<ScoresUpdatedSignal>();
         }
     }
 }

@@ -13,15 +13,15 @@ namespace Zoo
 
         public void Initialize()
         {
-            _signalBus.Subscribe<AnimalDiedSignal>(OnAnimalDead);
+            _signalBus.Subscribe<AnimalDiedSignal>( OnAnimalDead );
         }
 
         public void Dispose()
         {
-            _signalBus.Unsubscribe<AnimalDiedSignal>(OnAnimalDead);
+            _signalBus.Unsubscribe<AnimalDiedSignal>( OnAnimalDead );
         }
 
-        void OnAnimalDead(AnimalDiedSignal aniaml)
+        void OnAnimalDead( AnimalDiedSignal aniaml )
         {
             switch (aniaml.AnimalType)
             {
@@ -33,7 +33,8 @@ namespace Zoo
                     break;
             }
 
-            UnityEngine.Debug.Log($"OnAnimalDead, TotalPreyDeath: {TotalPreyDeath}, TotalPredatorsDeath {TotalPredatorsDeath}");
+            UnityEngine.Debug.Log( $"OnAnimalDead, TotalPreyDeath: {TotalPreyDeath}, TotalPredatorsDeath {TotalPredatorsDeath}" );
+            _signalBus.Fire( new ScoresUpdatedSignal( TotalPreyDeath, TotalPredatorsDeath ));
         }
     }
 }
