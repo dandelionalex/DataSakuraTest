@@ -6,7 +6,7 @@ namespace Zoo.Installers
 {
     public class SceneInstaller : MonoInstaller
     {
-        [SerializeField] private GameConfig _gameConfig;
+        [SerializeField] GameConfig _gameConfig;
 
         public override void InstallBindings()
         {

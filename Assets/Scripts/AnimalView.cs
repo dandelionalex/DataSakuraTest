@@ -5,7 +5,7 @@ namespace Zoo.View
 {
     public interface IAnimalView
     {
-        Action<Collider> OnCollideWithSomething { get; }
+        Action<Collision> OnCollideWithSomething { get; set; }
         void PlayAnimation(string key);
     }
 
@@ -15,12 +15,11 @@ namespace Zoo.View
         [SerializeField]
         private Animator _animator;
 
-        public Action<Collider> OnCollideWithSomething { get; }
+        public Action<Collision> OnCollideWithSomething { get; set; }
 
-        void OnTggerEnter(Collider other)
+        void OnCollisionEnter(Collision collision)
         {
-            Debug.Log($"OnTriggerEnter {other.gameObject.name}");
-            OnCollideWithSomething?.Invoke(other);
+            OnCollideWithSomething?.Invoke(collision);
         }
 
         public void PlayAnimation(string key)

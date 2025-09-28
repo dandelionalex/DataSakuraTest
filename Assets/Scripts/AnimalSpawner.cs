@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
-using Zoo;
 using Zoo.Config;
 
 namespace Zoo
@@ -12,7 +11,7 @@ namespace Zoo
         [Inject] private GameConfig _gameConfig;
         [Inject] private AnimalFactory _amimalFactory;
 
-        List<AnimalPresenter> _animals = new List<AnimalPresenter>();
+        List<IAnimalPresenter> _animals = new List<IAnimalPresenter>();
         bool _shouldSpawn;
 
         void Start()
@@ -44,9 +43,15 @@ namespace Zoo
                                                 Random.Range(-height, height));
 
             var animalPresenter = _amimalFactory.Spawn(animalConfig, amnimalPos, this.transform);
-
+            animalPresenter.Die += OnAnimalDie;
             _animals.Add(animalPresenter);
             animalPresenter.StartMove();
+        }
+
+        void OnAnimalDie(IAnimalPresenter presenter)
+        {
+            presenter.Die -= OnAnimalDie;
+             _animals.Remove(presenter);
         }
     }
 }

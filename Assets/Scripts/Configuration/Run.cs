@@ -6,8 +6,8 @@ namespace Zoo.Config
     [CreateAssetMenu(fileName = "Run", menuName = "Zoo/RunBehaviour")]
     public class Run : BaseMovement
     {
-        private const string RUN = "run";
-        [SerializeField] private float _speed;
+        const string RUN = "run";
+        [SerializeField] float _speed;
 
         public override void StartMove(IAnimalPresenter target, MonoBehaviour context)
         {
@@ -26,8 +26,9 @@ namespace Zoo.Config
             while (!target.IsDied)
             {
                 yield return null;
+                var mask           = LayerMask.GetMask("Wall");
 
-                if (Physics.Raycast(transform.position, currentDirection, 1.2f))
+                if (Physics.Raycast(transform.position, currentDirection, 1.2f, mask))
                 {
                     currentDirection *= -1;
                     AdjustRotation(transform, currentDirection);

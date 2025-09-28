@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6585324533512180165}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7785993795240888550}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: neck.02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2866599969474528431}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: neck.01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4462348340439564167}
   - component: {fileID: 2311683543228773735}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8531555221629931683}
   - component: {fileID: 8319246735976726104}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8147046413826956854}
   - component: {fileID: 5442504493887559991}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 480745877412113367}
   - component: {fileID: 4526051182192201800}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 6392295746617650520}
   - component: {fileID: 5744159219500874566}
   - component: {fileID: -3865065456571102938}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Taipan (Snake)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +643,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3327578256293065397}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tail.01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4399802892305169450}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,7 +707,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4041582921267333190}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +740,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8161658182462644725}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tail.03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8306261897508883890}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -803,7 +803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6821626466792652791}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tail.02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

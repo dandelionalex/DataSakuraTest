@@ -7,11 +7,11 @@ namespace Zoo.Config
     [CreateAssetMenu(fileName = "Jump", menuName = "Zoo/JumpBehaviour")]
     public class Jump : BaseMovement
     {
-        private const string JUMP = "Jump";
+        const string JUMP = "Jump";
 
-        [SerializeField] private float _delay;
-        [SerializeField] private float _distance;
-        [SerializeField] private float _jumpHight;
+        [SerializeField] float _delay;
+        [SerializeField] float _distance;
+        [SerializeField] float _jumpHight;
 
         public override void StartMove(IAnimalPresenter target, MonoBehaviour context)
         {
@@ -28,9 +28,10 @@ namespace Zoo.Config
             {
                 yield return new WaitForSeconds(_delay);
 
-                var currentDirection = GetNextRandomTarget();
+                var currentDirection    = GetNextRandomTarget();
+                var mask                = LayerMask.GetMask("Wall");
 
-                if (Physics.Raycast(transform.position, currentDirection, 1.2f))
+                if (Physics.Raycast(transform.position, currentDirection, _distance, mask))
                 {
                     currentDirection *= -1;
                 }
