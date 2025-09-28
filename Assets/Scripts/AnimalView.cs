@@ -10,7 +10,7 @@ namespace Zoo.View
     }
 
     [RequireComponent(typeof(Animator))]
-    public class AnimalView : MonoBehaviour
+    public sealed class AnimalView : MonoBehaviour
     {
         [SerializeField]
         private Animator _animator;

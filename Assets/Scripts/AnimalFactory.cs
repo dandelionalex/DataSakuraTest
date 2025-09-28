@@ -5,7 +5,7 @@ using Zoo.View;
 
 namespace Zoo
 {
-    public class AnimalFactory
+    public sealed class AnimalFactory
     {
         private DiContainer _container;
 
@@ -14,9 +14,9 @@ namespace Zoo
             _container = container;
         }
 
-        public AnimalPresenter Spawn(AnimalConfig animalConfig, Vector3 position)
+        public AnimalPresenter Spawn(AnimalConfig animalConfig, Vector3 position, Transform parent)
         {
-            var view = _container.InstantiatePrefab(animalConfig.prefab);
+            var view = _container.InstantiatePrefab(animalConfig.prefab, position, Quaternion.identity, parent);
             var animalView = view.GetComponent<AnimalView>();
 
             if (animalView == null)

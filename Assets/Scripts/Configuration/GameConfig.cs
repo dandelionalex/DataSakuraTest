@@ -7,6 +7,8 @@ namespace Zoo.Config
     {
         public Vector2 mapSize;
 
+        public Vector2 spawnPadding;
+
         public float minDelayBeforeSpawn;
         public float maxDelayBeforeSpawn;
 

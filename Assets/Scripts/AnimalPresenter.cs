@@ -12,7 +12,7 @@ namespace Zoo
         void PlayAnimation(string key);
     }
 
-    public class AnimalPresenter : IAnimalPresenter
+    public sealed class AnimalPresenter : IAnimalPresenter
     {
         public AnimalView AnimalView;
         public BaseMovement MovementBehaviour;

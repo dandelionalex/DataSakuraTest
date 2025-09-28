@@ -36,17 +36,5 @@ namespace Zoo.Config
                 transform.position += currentDirection * _speed;
             }
         }
-
-        private Vector3 GetNextRandomTarget()
-        {
-            var i = Random.Range(0, directions.Length);
-            return directions[i];
-        }
-
-        private void AdjustRotation(Transform transform, Vector3 direction)
-        {
-            var rot = Quaternion.LookRotation(direction, Vector3.up);
-            transform.rotation = rot;
-        }
     }
 }

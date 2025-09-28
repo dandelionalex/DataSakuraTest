@@ -19,20 +19,27 @@ namespace Zoo.Config
             context.StartCoroutine(JumpRoutine(target, context));
         }
 
-        IEnumerator JumpRoutine(IAnimalPresenter target, MonoBehaviour context )
+        IEnumerator JumpRoutine(IAnimalPresenter target, MonoBehaviour context)
         {
             Sequence doTweenSequence = null;
-            
+            var transform = target.AnimalTransform;
+
             while (!target.IsDied)
             {
                 yield return new WaitForSeconds(_delay);
 
-                var randomDirection = Random.Range(0, directions.Length);
-                var transform = target.AnimalTransform;
-                var jumpTarget = transform.position + directions[randomDirection] * _distance;
+                var currentDirection = GetNextRandomTarget();
+
+                if (Physics.Raycast(transform.position, currentDirection, 1.2f))
+                {
+                    currentDirection *= -1;
+                }
+
+                AdjustRotation(transform, currentDirection);
+                var jumpTarget = transform.position + currentDirection * _distance;
 
                 doTweenSequence?.Kill();
-                
+
                 target.PlayAnimation(JUMP);
                 doTweenSequence = transform
                     .DOJump(jumpTarget, _jumpHight, 1, 1)
