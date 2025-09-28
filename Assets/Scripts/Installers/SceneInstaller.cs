@@ -1,6 +1,7 @@
 using UnityEngine;
 using Zenject;
 using Zoo.Config;
+using Zoo.Signals;
 
 namespace Zoo.Installers
 {
@@ -10,9 +11,13 @@ namespace Zoo.Installers
 
         public override void InstallBindings()
         {
+            SignalBusInstaller.Install(Container);
+
             Container.BindInstance(_gameConfig).AsSingle();
             Container.Bind<AnimalFactory>().AsSingle();
-            //UI
+            Container.BindInterfacesAndSelfTo<GameController>().AsSingle();
+
+            Container.DeclareSignal<AnimalDiedSignal>();
         }
     }
 }

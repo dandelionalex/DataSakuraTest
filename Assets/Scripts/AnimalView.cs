@@ -7,15 +7,17 @@ namespace Zoo.View
     {
         Action<Collision> OnCollideWithSomething { get; set; }
         void PlayAnimation(string key);
+        IAnimalPresenter AnimalPresenter { get; set; }
     }
 
     [RequireComponent(typeof(Animator))]
-    public sealed class AnimalView : MonoBehaviour
+    public sealed class AnimalView : MonoBehaviour, IAnimalView
     {
         [SerializeField]
         private Animator _animator;
 
         public Action<Collision> OnCollideWithSomething { get; set; }
+        public IAnimalPresenter AnimalPresenter { get; set; }
 
         void OnCollisionEnter(Collision collision)
         {

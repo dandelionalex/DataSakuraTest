@@ -7,7 +7,7 @@ namespace Zoo.Config
     [CreateAssetMenu(fileName = "Jump", menuName = "Zoo/JumpBehaviour")]
     public class Jump : BaseMovement
     {
-        const string JUMP = "Jump";
+        const string JUMP = "jump";
 
         [SerializeField] float _delay;
         [SerializeField] float _distance;

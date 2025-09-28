@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using Zoo.Config;
+using Zoo.Signals;
 
 namespace Zoo
 {
@@ -10,6 +11,7 @@ namespace Zoo
     {
         [Inject] private GameConfig _gameConfig;
         [Inject] private AnimalFactory _amimalFactory;
+        [Inject] private SignalBus _signalBus;
 
         List<IAnimalPresenter> _animals = new List<IAnimalPresenter>();
         bool _shouldSpawn;
@@ -43,15 +45,18 @@ namespace Zoo
                                                 Random.Range(-height, height));
 
             var animalPresenter = _amimalFactory.Spawn(animalConfig, amnimalPos, this.transform);
-            animalPresenter.Die += OnAnimalDie;
+            animalPresenter.OnDie += OnAnimalDie;
+
             _animals.Add(animalPresenter);
             animalPresenter.StartMove();
         }
 
         void OnAnimalDie(IAnimalPresenter presenter)
         {
-            presenter.Die -= OnAnimalDie;
-             _animals.Remove(presenter);
+            presenter.OnDie -= OnAnimalDie;
+            _animals.Remove(presenter);
+
+            _signalBus.Fire( new AnimalDiedSignal(presenter.AnimalType) );
         }
     }
 }

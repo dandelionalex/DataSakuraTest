@@ -24,7 +24,8 @@ namespace Zoo
                 throw new System.Exception("an AnimalView script must be attached to animal prefab");
             }
 
-            var animalPresenter = new AnimalPresenter(animalView, animalConfig.MovementBehaviour);
+            var animalPresenter = new AnimalPresenter(animalView, animalConfig.MovementBehaviour, animalConfig.animalType);
+            animalView.AnimalPresenter = animalPresenter;
 
             return animalPresenter;
         }
