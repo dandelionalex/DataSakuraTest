@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameConfig: {fileID: 11400000, guid: 2d97a6c6efb2f49fb9147d431946aec1, type: 2}
+  _prefabConfig: {fileID: 11400000, guid: 5cf6187dce2e84214b689d7890275757, type: 2}
 --- !u!1 &322924787
 GameObject:
   m_ObjectHideFlags: 0

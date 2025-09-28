@@ -12,7 +12,7 @@ namespace Zoo
     {
         [Inject] GameConfig         _gameConfig;
         [Inject] AnimalFactory      _amimalFactory;
-        [Inject] UIInWorldFactory   _UIInWorldFactory;
+
         [Inject] SignalBus          _signalBus;
         [Inject] PrefabsConfig      _prefabsConfig;
 
@@ -60,8 +60,6 @@ namespace Zoo
             _animals.Remove(presenter);
 
             _signalBus.Fire(new AnimalDiedSignal(presenter.AnimalType));
-            
-            _UIInWorldFactory.Spawn(presenter.AnimalTransform.position, this.transform);
         }
     }
 }

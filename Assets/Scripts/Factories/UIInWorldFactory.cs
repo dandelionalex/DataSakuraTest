@@ -18,7 +18,7 @@ namespace Zoo.Factories
         public GameObject Spawn( Vector3 position, Transform parent )
         {
             var view = _container.InstantiatePrefab( _prefabsConfig.TastyPrefab, position, Quaternion.identity, parent );
-            
+
             return view;
         }
     }
