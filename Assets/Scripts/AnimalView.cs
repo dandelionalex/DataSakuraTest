@@ -13,8 +13,7 @@ namespace Zoo.View
     [RequireComponent(typeof(Animator))]
     public sealed class AnimalView : MonoBehaviour, IAnimalView
     {
-        [SerializeField]
-        private Animator _animator;
+        [SerializeField] Animator _animator;
 
         public Action<Collision> OnCollideWithSomething { get; set; }
         public IAnimalPresenter AnimalPresenter { get; set; }

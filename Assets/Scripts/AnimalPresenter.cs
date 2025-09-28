@@ -14,7 +14,7 @@ namespace Zoo
         Action<IAnimalPresenter> OnDie { get; set; }
         Transform AnimalTransform { get; }
         void StartMove();
-        void PlayAnimation(string key);
+        void PlayAnimation( string key );
         void Die();
     }
 
@@ -56,9 +56,9 @@ namespace Zoo
             MovementBehaviour.StartMove( this, AnimalView );
         }
 
-        void OnCollision(Collision other)
+        void OnCollision( Collision other )
         {
-            if (other.gameObject.layer != LayerMask.NameToLayer("Animal"))
+            if ( other.gameObject.layer != LayerMask.NameToLayer("Animal") )
                 return;
 
             if (IsDied)
@@ -67,7 +67,9 @@ namespace Zoo
             var otherAnimal = other.gameObject.GetComponent<AnimalView>();
             var otherType = otherAnimal.AnimalPresenter.AnimalType;
 
-            if ( AnimalType == AnimalType.Prey && AnimalType == otherType )
+
+            //TODO: Move it somewhere
+            if ( AnimalType == AnimalType.Prey && AnimalType == otherType) 
             {
                 otherAnimal.AnimalPresenter.Die();
                 Die();
@@ -79,11 +81,11 @@ namespace Zoo
             }
             else if ( AnimalType == AnimalType.Predator && AnimalType == otherType )
             {
-                if ( !otherAnimal.AnimalPresenter.IsDied )
+                if (!otherAnimal.AnimalPresenter.IsDied)
                 {
-                    _UIInWorldFactory.Spawn( AnimalTransform.position, null );
+                    _UIInWorldFactory.Spawn(AnimalTransform.position, null);
                     otherAnimal.AnimalPresenter.Die();
-                }   
+                }
             }
         }
 

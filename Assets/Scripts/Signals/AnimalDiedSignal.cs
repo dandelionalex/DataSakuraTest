@@ -4,9 +4,9 @@ namespace Zoo.Signals
 {
     public class AnimalDiedSignal
     {
-        public AnimalType AnimalType { get;}
+        public AnimalType AnimalType { get; }
 
-        public AnimalDiedSignal(AnimalType animalType)
+        public AnimalDiedSignal( AnimalType animalType )
         {
             AnimalType = animalType;
         }

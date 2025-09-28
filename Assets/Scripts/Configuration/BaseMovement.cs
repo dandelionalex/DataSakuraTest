@@ -19,13 +19,13 @@ namespace Zoo.Config
 
         protected void AdjustRotation( Transform transform, Vector3 direction )
         {
-            var rot = Quaternion.LookRotation(direction, Vector3.up);
+            var rot = Quaternion.LookRotation( direction, Vector3.up );
             transform.rotation = rot;
         }
 
         protected Vector3 GetNextRandomTarget()
         {
-            var i = Random.Range(0, directions.Length);
+            var i = Random.Range( 0, directions.Length );
             return directions[i];
         }
     }

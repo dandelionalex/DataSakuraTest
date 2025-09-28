@@ -6,8 +6,8 @@ namespace Zoo.Factories
 {
     public sealed class UIInWorldFactory
     {
-        DiContainer _container;
-        PrefabsConfig _prefabsConfig;
+        DiContainer     _container;
+        PrefabsConfig   _prefabsConfig;
 
         public UIInWorldFactory( DiContainer container, PrefabsConfig prefabsConfig )
         {

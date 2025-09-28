@@ -10,13 +10,13 @@ namespace Zoo.Factories
         DiContainer         _container;
         UIInWorldFactory    _UIInWorldFactory;
 
-        public AnimalFactory(DiContainer container, UIInWorldFactory UIInWorldFactory)
+        public AnimalFactory( DiContainer container, UIInWorldFactory UIInWorldFactory )
         {
             _container = container;
             _UIInWorldFactory = UIInWorldFactory;
         }
 
-        public IAnimalPresenter Spawn(AnimalConfig animalConfig, Vector3 position, Transform parent)
+        public IAnimalPresenter Spawn( AnimalConfig animalConfig, Vector3 position, Transform parent )
         {
             var view = _container.InstantiatePrefab( animalConfig.prefab, position, Quaternion.identity, parent );
             var animalView = view.GetComponent<AnimalView>();

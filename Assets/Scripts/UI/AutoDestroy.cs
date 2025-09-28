@@ -7,10 +7,15 @@ namespace Zoo.UI
     {
         [SerializeField] int _timeToDestroy;
 
+        void Start()
+        {
+            StartCoroutine( DestroyRoutine() );
+        }
+
         IEnumerator DestroyRoutine()
         {
-            yield return new WaitForSeconds(_timeToDestroy);
-            Destroy(gameObject);
+            yield return new WaitForSeconds( _timeToDestroy );
+            Destroy( gameObject );
         }
     }
 }

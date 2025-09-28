@@ -12,9 +12,7 @@ namespace Zoo
     {
         [Inject] GameConfig         _gameConfig;
         [Inject] AnimalFactory      _amimalFactory;
-
         [Inject] SignalBus          _signalBus;
-        [Inject] PrefabsConfig      _prefabsConfig;
 
         List<IAnimalPresenter> _animals = new List<IAnimalPresenter>();
         bool _shouldSpawn;
@@ -23,7 +21,7 @@ namespace Zoo
         {
             _shouldSpawn = true;
 
-            StartCoroutine(SpawnRoutine());
+            StartCoroutine( SpawnRoutine() );
         }
 
         IEnumerator SpawnRoutine()
@@ -31,7 +29,7 @@ namespace Zoo
             while (_shouldSpawn)
             {
                 SpawnNextAnimal();
-                var delay = Random.Range(_gameConfig.minDelayBeforeSpawn, _gameConfig.maxDelayBeforeSpawn);
+                var delay = Random.Range( _gameConfig.minDelayBeforeSpawn, _gameConfig.maxDelayBeforeSpawn );
                 yield return new WaitForSeconds(delay);
             }
         }
@@ -50,16 +48,16 @@ namespace Zoo
             var animalPresenter = _amimalFactory.Spawn( animalConfig, amnimalPos, this.transform );
             animalPresenter.OnDie += OnAnimalDie;
 
-            _animals.Add(animalPresenter);
+            _animals.Add( animalPresenter );
             animalPresenter.StartMove();
         }
 
-        void OnAnimalDie(IAnimalPresenter presenter)
+        void OnAnimalDie( IAnimalPresenter presenter )
         {
             presenter.OnDie -= OnAnimalDie;
-            _animals.Remove(presenter);
+            _animals.Remove( presenter );
 
-            _signalBus.Fire(new AnimalDiedSignal(presenter.AnimalType));
+            _signalBus.Fire( new AnimalDiedSignal( presenter.AnimalType ));
         }
     }
 }

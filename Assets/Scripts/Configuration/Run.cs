@@ -9,26 +9,26 @@ namespace Zoo.Config
         const string RUN = "run";
         [SerializeField] float _speed;
 
-        public override void StartMove(IAnimalPresenter target, MonoBehaviour context)
+        public override void StartMove( IAnimalPresenter target, MonoBehaviour context )
         {
             base.StartMove(target, context);
             target.PlayAnimation(RUN);
-            context.StartCoroutine(RunRoutine(target, context));
+            context.StartCoroutine( RunRoutine( target, context ) );
         }
 
-        IEnumerator RunRoutine(IAnimalPresenter target, MonoBehaviour context)
+        IEnumerator RunRoutine( IAnimalPresenter target, MonoBehaviour context )
         {
             var transform = target.AnimalTransform;
             var currentDirection = GetNextRandomTarget();
             
-            AdjustRotation(transform, currentDirection);
+            AdjustRotation( transform, currentDirection );
 
             while (!target.IsDied)
             {
                 yield return null;
                 var mask           = LayerMask.GetMask("Wall");
 
-                if (Physics.Raycast(transform.position, currentDirection, 1.2f, mask))
+                if ( Physics.Raycast(transform.position, currentDirection, 1.2f, mask) )
                 {
                     currentDirection *= -1;
                     AdjustRotation(transform, currentDirection);

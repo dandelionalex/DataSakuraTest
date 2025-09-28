@@ -17,15 +17,15 @@ namespace Zoo.UI
 
         void OnEnable()
         {
-            _signalBus.Subscribe<ScoresUpdatedSignal>(ScoreUpdatedSignal);
+            _signalBus.Subscribe<ScoresUpdatedSignal>( ScoreUpdatedSignal );
         }
 
         void OnDisable()
         {
-            _signalBus.Unsubscribe<ScoresUpdatedSignal>(ScoreUpdatedSignal);
+            _signalBus.Unsubscribe<ScoresUpdatedSignal>( ScoreUpdatedSignal );
         }
 
-        void ScoreUpdatedSignal(ScoresUpdatedSignal signal)
+        void ScoreUpdatedSignal( ScoresUpdatedSignal signal )
         {
             PreysDied.text      = $"{PREYS_TEXT} {signal.PreysDied}";
             PredatorsDied.text  = $"{PREDATORS_TEXT} {signal.PredatorsDied}";
